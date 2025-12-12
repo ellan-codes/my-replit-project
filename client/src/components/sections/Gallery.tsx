@@ -1,9 +1,9 @@
-import gallery1 from "@assets/generated_images/diy_backyard_party_table.png";
-import gallery2 from "@assets/generated_images/homemade_cupcakes.png";
-import gallery3 from "@assets/generated_images/kids_playing_in_backyard.png";
-import gallery4 from "@assets/generated_images/simple_balloon_decoration.png";
-import gallery5 from "@assets/generated_images/handmade_party_favors.png";
-import gallery6 from "@assets/generated_images/simple_kids_craft_activity.png";
+import gallery1 from "@assets/generated_images/real_backyard_party_table_iphone_photo.png";
+import gallery2 from "@assets/generated_images/homemade_cupcakes_on_counter.png";
+import gallery3 from "@assets/generated_images/kids_playing_tag_backyard.png";
+import gallery4 from "@assets/generated_images/simple_living_room_party_decor.png";
+import gallery5 from "@assets/generated_images/handmade_paper_goodie_bags.png";
+import gallery6 from "@assets/generated_images/kids_messy_craft_table.png";
 
 const images = [
   { src: gallery1, caption: "Sparkly setups" },
