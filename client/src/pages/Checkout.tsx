@@ -146,7 +146,7 @@ export default function Checkout() {
               <div className="mt-6 pt-4 border-t-2 border-primary/10">
                 <p className="text-sm text-muted-foreground">Estimated Total</p>
                 <p className="text-2xl font-bold text-primary">
-                  ${totalEstimatedMin} – ${totalEstimatedMax}
+                  ${totalEstimatedMin === totalEstimatedMax ? totalEstimatedMin : `${totalEstimatedMin} – ${totalEstimatedMax}`}
                 </p>
               </div>
             </div>

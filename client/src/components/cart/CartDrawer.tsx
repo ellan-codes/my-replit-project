@@ -79,8 +79,9 @@ export function CartDrawer({
                     </p>
                   </div>
                   <div className="mt-3 pt-3 border-t border-secondary/20 font-bold text-primary">
-                    Est: ${item.minHourly * item.hours + (item.isEntertainmentAddOn ? 25 : 0)} – $
-                    {item.maxHourly * item.hours + (item.isEntertainmentAddOn ? 25 : 0)}
+                    Est: ${
+                      (item.cateringSize === "Small" ? item.minHourly : item.cateringSize === "Medium" ? Math.round((item.minHourly + item.maxHourly)/2) : item.maxHourly) * item.hours + (item.isEntertainmentAddOn ? 25 : 0)
+                    }
                   </div>
                 </div>
               ))}
@@ -93,7 +94,7 @@ export function CartDrawer({
             <div className="flex justify-between font-bold text-lg">
               <span>Total Estimate:</span>
               <span className="text-primary">
-                ${totalEstimatedMin} – ${totalEstimatedMax}
+                ${totalEstimatedMin === totalEstimatedMax ? totalEstimatedMin : `${totalEstimatedMin} – ${totalEstimatedMax}`}
               </span>
             </div>
             <p className="text-xs text-muted-foreground text-center">

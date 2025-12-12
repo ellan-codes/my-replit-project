@@ -128,13 +128,27 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const cartCount = items.length;
 
   const totalEstimatedMin = items.reduce((acc, item) => {
-    let cost = item.minHourly * item.hours;
+    let hourlyRate = item.minHourly;
+    if (item.cateringSize === "Medium") {
+      hourlyRate = Math.round((item.minHourly + item.maxHourly) / 2);
+    } else if (item.cateringSize === "Large") {
+      hourlyRate = item.maxHourly;
+    }
+    
+    let cost = hourlyRate * item.hours;
     if (item.isEntertainmentAddOn) cost += 25;
     return acc + cost;
   }, 0);
 
   const totalEstimatedMax = items.reduce((acc, item) => {
-    let cost = item.maxHourly * item.hours;
+    let hourlyRate = item.maxHourly;
+    if (item.cateringSize === "Small") {
+      hourlyRate = item.minHourly;
+    } else if (item.cateringSize === "Medium") {
+      hourlyRate = Math.round((item.minHourly + item.maxHourly) / 2);
+    }
+    
+    let cost = hourlyRate * item.hours;
     if (item.isEntertainmentAddOn) cost += 25;
     return acc + cost;
   }, 0);
