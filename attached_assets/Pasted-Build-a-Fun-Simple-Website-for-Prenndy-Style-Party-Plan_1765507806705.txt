@@ -1,0 +1,329 @@
+Build a Fun, Simple Website for “Prenndy Style Party Planning” (with Cart + Email Booking)
+
+Create a colorful, sparkly, kid-friendly website for a party planning business called “Prenndy Style Party Planning”. The site should be fun, simple, easy to navigate, and work great on mobile.
+
+Business Summary
+
+We help parents plan kids’ parties by providing party planning + catering + setup + decorating + serving + entertainment (depending on package). Pricing ranges $45–$200 per hour depending on party size and package.
+
+Site Structure
+
+Make this a single-page site with smooth scrolling + a sticky top nav (or a small multi-page site if easier). Include:
+
+Nav links: Home, Packages, Catering, Gallery, Reviews, Cart, About, Contact
+
+Add a floating “Cart” button (shows item count) on mobile and desktop.
+
+1) Home / Hero (first screen)
+
+Big title: Prenndy Style Party Planning
+
+Subtitle: “Sparkly parties. Delicious food. Stress-free parents.”
+
+Bright, colorful hero image/illustration (balloons/confetti/sparkles)
+
+Two buttons:
+
+Shop Packages
+
+Request a Quote
+
+Add 3 quick “trust badges” beneath:
+
+“Catering + Setup”
+
+“Kid-friendly entertainment”
+
+“Made for busy parents”
+
+2) Packages Section (4 package cards + details modal)
+
+Show 4 clickable package cards. Each card has:
+
+Price range per hour
+
+Included services
+
+“Popular” badge on one package (you choose, likely All-Inclusive)
+
+Button: Customize + Add to Cart
+Clicking opens a simple modal to select options before adding to cart.
+
+Package A: All-Inclusive Premium Package
+
+$100–$200 per hour
+
+Includes: Catering, Setup, Serving, Decorating, Entertainment
+
+Package B: All-Inclusive Package
+
+$90–$150 per hour
+
+Includes: Catering, Serving, Setup
+
+Package C: Bundle Premium Package
+
+$80–$100 per hour + Entertainment ($25 one-time fee)
+
+Includes: Serving, Catering, Entertainment
+
+Note: The $25 entertainment fee is paid once (not hourly)
+
+Package D: Bundle
+
+$45–$90 per hour
+
+Includes: Setup, Catering, Serving
+
+Optional add-on: Entertainment
+
+3) Catering Section (Small / Medium / Large + “How much food?”)
+
+When adding a package, user must pick catering size:
+
+Small
+
+Medium
+
+Large
+
+Add simple helper copy like:
+
+Small: “A few kids + parents”
+
+Medium: “A solid party crew”
+
+Large: “Big celebration energy”
+
+Also add optional field:
+
+Estimated guest count (number input)
+
+4) Entertainment Options (Add-ons)
+
+Some packages include entertainment; some don’t.
+Implement add-ons properly:
+
+Entertainment add-on toggle (checkbox):
+
+If package already includes entertainment: show “Included” (no charge)
+
+If package does not include: allow adding entertainment
+
+Charge $25 one-time fee (not per hour)
+
+Optional add-on ideas (fun + simple, can be checkboxes even if not priced):
+
+“Games host”
+
+“Kids dance / mini cheer”
+
+“Party helper (extra hands)”
+(These can be “request-only” with no fixed price; include in the email.)
+
+5) Cart (must be clear and simple)
+
+Cart should show:
+
+Package name
+
+Catering size
+
+Guest count (if provided)
+
+Entertainment (Included / Added $25 / Not selected)
+
+Hourly price range (since pricing is a range)
+
+Quantity should generally be 1 (package booking), but allow removing/editing
+
+Add a “Party Duration” selector in cart or checkout:
+
+Number of hours (1–6)
+Since pricing is a range, show an estimate like:
+
+“Estimated total: $X–$Y + add-ons”
+Calculate:
+
+min = minHourly * hours + one-time add-ons
+
+max = maxHourly * hours + one-time add-ons
+
+6) Checkout / Request Booking (email sending REQUIRED)
+
+At checkout, collect:
+
+Parent/Customer name
+
+Email
+
+Phone
+
+Party date
+
+Party start time (optional)
+
+Party location/address + city (Encinitas-friendly but not required)
+
+Guest count (if not already)
+
+Theme (optional: “Taylor Swift”, “Soccer”, “Mermaid”, etc.)
+
+Dietary notes/allergies
+
+Notes / special requests
+
+Critical behavior
+
+When user clicks Place Order / Request Booking:
+
+Send an email to the business owner that includes:
+
+Package selected
+
+Hour count
+
+Catering size
+
+Guest count
+
+Entertainment (included/added/none) + $25 if added
+
+Estimated total range
+
+Customer contact info
+
+Party date/time/location
+
+Notes/theme/allergies
+
+Show a fun confirmation page:
+
+“Woohoo! Your party request is in!”
+
+“We’ll email you back soon to confirm details.”
+
+Implementation:
+
+Use Node/Express route or serverless function and an email provider:
+
+EmailJS OR Resend OR SendGrid OR Nodemailer SMTP
+
+Store secrets in environment variables (no hardcoding)
+
+Also add a fallback contact method:
+
+A “Contact Us” form that sends the same email (for people not using cart)
+
+7) Gallery Section (we missed this before)
+
+Add a small gallery with 6 placeholder images (or fun illustrations):
+
+Balloons, tables, cupcakes, confetti, party setup, kids activities
+Include captions like:
+
+“Sparkly setups”
+
+“Kid-approved treats”
+
+“Decor that pops”
+
+8) Reviews / Testimonials Section (we missed this before)
+
+Add 3–5 sample testimonials (placeholders) with cute names:
+
+“Fast setup and super friendly!”
+
+“Food was a hit—zero stress.”
+
+“Kids had the best time.”
+
+9) About Section (updated facts)
+
+Add founders:
+
+Founder: Becca Marie Kennedy
+
+13 years old, in 8th grade
+
+Fun, creative, easy to work with
+
+Lives in Encinitas
+
+Loves decorating, cooking, and boxing
+
+Co-Founder: Ella Porter
+
+13 years old
+
+Lives in Encinitas
+
+Loves tumbling and cheerleading
+
+Loves being around kids and decorating
+
+Favorite color: pink
+
+Mission / Story
+
+This business is based on a class project for Village Gate
+
+Proceeds support a class party and teach kids how to run a business and build independence
+
+10) Contact Section (simple + obvious)
+
+Include:
+
+Email link (placeholder)
+
+Phone placeholder
+
+Contact form (sends email)
+
+Business location: Encinitas, CA (friendly mention)
+
+Add CTA: “Tell us your date and party size—we’ll reply fast.”
+
+UI / Style Requirements
+
+Visual theme: confetti/sparkles, bright colors, rounded corners, big friendly fonts
+
+Accessibility: readable fonts, good contrast, keyboard-friendly forms
+
+Easy navigation: sticky nav + scroll-to sections
+
+Make it “fun” but not cluttered
+
+Add small animations (subtle sparkle/confetti in hero, hover effects on package cards)
+
+Tech Requirements
+
+Choose a simple stack that works well in Replit:
+
+Option A: React + Vite + Express backend
+
+Option B: Next.js fullstack
+
+Data:
+
+Package info stored in a simple JSON object
+
+Cart stored in React state (optionally localStorage so it persists)
+
+Deliverables:
+
+Working site
+
+Package selection modal
+
+Cart
+
+Checkout + email sending
+
+README with setup steps:
+
+how to set env vars
+
+how to run locally
+
+how to deploy from Replit
