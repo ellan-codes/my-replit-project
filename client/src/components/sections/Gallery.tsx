@@ -10,9 +10,10 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import gallery1 from "@assets/generated_images/real_backyard_party_table_iphone_photo.png";
 import gallery2 from "@assets/generated_images/homemade_cupcakes_on_counter.png";
 import gallery3 from "@assets/generated_images/kids_playing_tag_backyard.png";
-import gallery4 from "@assets/generated_images/simple_living_room_party_decor.png";
-import gallery5 from "@assets/generated_images/handmade_paper_goodie_bags.png";
-import gallery6 from "@assets/generated_images/kids_messy_craft_table.png";
+import gallery7 from "@assets/generated_images/kids_dress_up_trunk.png";
+import gallery8 from "@assets/generated_images/cute_party_invitations.png";
+import gallery9 from "@assets/generated_images/party_music_setup.png";
+import gallery4_new from "@assets/generated_images/colorful_balloon_garland.png"; // Replacement for decor
 
 const images = [
   { 
@@ -54,7 +55,7 @@ const images = [
     ]
   },
   { 
-    src: gallery4, 
+    src: gallery4_new, 
     caption: "Decor that pops",
     description: "Simple yet effective decorations to transform your space:",
     details: [
@@ -90,6 +91,41 @@ const images = [
       "Party Hats & Noise Makers"
     ]
   },
+  {
+    src: gallery7,
+    caption: "Dress-Up Corner",
+    description: "Let their imaginations run wild with our dress-up trunk:",
+    details: [
+      "Sparkly Capes & Masks",
+      "Feather Boas",
+      "Princess Tiaras",
+      "Funny Hats",
+      "Foam Swords & Shields"
+    ]
+  },
+  {
+    src: gallery8,
+    caption: "Custom Invitations",
+    description: "Start the excitement early with beautiful invites:",
+    details: [
+      "Digital or Printed",
+      "Custom Themed Designs",
+      "RSVP Tracking Help",
+      "Matching Thank You Cards"
+    ]
+  },
+  {
+    src: gallery9,
+    caption: "Party Jams",
+    description: "We bring the tunes to keep everyone dancing:",
+    details: [
+      "Kid-Friendly Playlists",
+      "Bluetooth Speaker Setup",
+      "Mini Disco Lights",
+      "Dance Party Games",
+      "Request Your Favorites!"
+    ]
+  }
 ];
 
 export function Gallery() {
