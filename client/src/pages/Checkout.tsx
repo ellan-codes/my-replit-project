@@ -38,6 +38,9 @@ export default function Checkout() {
   const [_, setLocation] = useLocation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  
+  // The email where booking requests will be sent
+  const DESTINATION_EMAIL = "ellap@villagegatestudents.com";
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -59,12 +62,15 @@ export default function Checkout() {
     
     // Construct the email body/data
     const bookingData = {
+      to: DESTINATION_EMAIL,
       customer: values,
       cart: items,
-      totalEstimate: `$${totalEstimatedMin} - $${totalEstimatedMax}`,
+      totalEstimate: totalEstimatedMin === totalEstimatedMax 
+        ? `$${totalEstimatedMin}` 
+        : `$${totalEstimatedMin} - $${totalEstimatedMax}`,
     };
 
-    console.log("Sending booking request:", bookingData);
+    console.log(`Sending booking request to ${DESTINATION_EMAIL}:`, bookingData);
 
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 2000));
