@@ -80,7 +80,7 @@ export function CartDrawer({
                   </div>
                   <div className="mt-3 pt-3 border-t border-secondary/20 font-bold text-primary">
                     Est: ${
-                      (item.cateringSize === "Small" ? item.minHourly : item.cateringSize === "Medium" ? Math.round((item.minHourly + item.maxHourly)/2) : item.maxHourly) * item.hours + (item.isEntertainmentAddOn ? 25 : 0)
+                      item.hourlyRate * item.hours + (item.isEntertainmentAddOn ? 25 : 0)
                     }
                   </div>
                 </div>

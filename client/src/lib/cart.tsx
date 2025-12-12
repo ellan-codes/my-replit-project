@@ -9,6 +9,11 @@ export type Package = {
   priceRange: string; // e.g., "$100–$200"
   minHourly: number;
   maxHourly: number;
+  prices: {
+    Small: number;
+    Medium: number;
+    Large: number;
+  };
   includes: string[];
   isPopular?: boolean;
   hasEntertainmentIncluded: boolean;
@@ -20,6 +25,7 @@ export type CartItem = {
   packageName: string;
   minHourly: number;
   maxHourly: number;
+  hourlyRate: number;
   cateringSize: CateringSize;
   guestCount: number;
   hasEntertainment: boolean; // True if included or added
@@ -44,9 +50,14 @@ export const PACKAGES: Package[] = [
   {
     id: "package-a",
     name: "All-Inclusive Premium",
-    priceRange: "$100–$200",
-    minHourly: 100,
-    maxHourly: 200,
+    priceRange: "$45–$90",
+    minHourly: 45,
+    maxHourly: 90,
+    prices: {
+      Small: 45,
+      Medium: 70,
+      Large: 90,
+    },
     includes: ["Setup", "Catering", "Serving", "Decorating", "Entertainment"],
     isPopular: true,
     hasEntertainmentIncluded: true,
@@ -54,27 +65,42 @@ export const PACKAGES: Package[] = [
   {
     id: "package-b",
     name: "All-Inclusive",
-    priceRange: "$90–$150",
-    minHourly: 90,
-    maxHourly: 150,
+    priceRange: "$80–$130",
+    minHourly: 80,
+    maxHourly: 130,
+    prices: {
+      Small: 80,
+      Medium: 100,
+      Large: 130,
+    },
     includes: ["Setup", "Catering", "Serving", "Decorating"],
     hasEntertainmentIncluded: false,
   },
   {
     id: "package-c",
     name: "Bundle Premium",
-    priceRange: "$80–$100",
-    minHourly: 80,
-    maxHourly: 100,
+    priceRange: "$90–$150",
+    minHourly: 90,
+    maxHourly: 150,
+    prices: {
+      Small: 90,
+      Medium: 120,
+      Large: 150,
+    },
     includes: ["Setup", "Catering", "Serving"],
     hasEntertainmentIncluded: false,
   },
   {
     id: "package-d",
     name: "Bundle",
-    priceRange: "$45–$90",
-    minHourly: 45,
-    maxHourly: 90,
+    priceRange: "$100–$200",
+    minHourly: 100,
+    maxHourly: 200,
+    prices: {
+      Small: 100,
+      Medium: 150,
+      Large: 200,
+    },
     includes: ["Setup", "Catering"],
     hasEntertainmentIncluded: false,
   },
@@ -128,27 +154,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const cartCount = items.length;
 
   const totalEstimatedMin = items.reduce((acc, item) => {
-    let hourlyRate = item.minHourly;
-    if (item.cateringSize === "Medium") {
-      hourlyRate = Math.round((item.minHourly + item.maxHourly) / 2);
-    } else if (item.cateringSize === "Large") {
-      hourlyRate = item.maxHourly;
-    }
-    
-    let cost = hourlyRate * item.hours;
+    let cost = item.hourlyRate * item.hours;
     if (item.isEntertainmentAddOn) cost += 25;
     return acc + cost;
   }, 0);
 
   const totalEstimatedMax = items.reduce((acc, item) => {
-    let hourlyRate = item.maxHourly;
-    if (item.cateringSize === "Small") {
-      hourlyRate = item.minHourly;
-    } else if (item.cateringSize === "Medium") {
-      hourlyRate = Math.round((item.minHourly + item.maxHourly) / 2);
-    }
-    
-    let cost = hourlyRate * item.hours;
+    let cost = item.hourlyRate * item.hours;
     if (item.isEntertainmentAddOn) cost += 25;
     return acc + cost;
   }, 0);

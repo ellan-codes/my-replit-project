@@ -104,11 +104,15 @@ function CustomizeModal({
   if (!pkg) return null;
 
   const handleAddToCart = () => {
+    // Get the correct price based on catering size
+    const hourlyRate = pkg.prices[cateringSize];
+    
     addItem({
       packageId: pkg.id,
       packageName: pkg.name,
       minHourly: pkg.minHourly,
       maxHourly: pkg.maxHourly,
+      hourlyRate: hourlyRate,
       cateringSize,
       guestCount: parseInt(guestCount) || 0,
       hasEntertainment: pkg.hasEntertainmentIncluded || addEntertainment,
