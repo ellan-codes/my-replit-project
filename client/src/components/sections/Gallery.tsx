@@ -1,9 +1,9 @@
-import gallery1 from "@assets/generated_images/sparkly_party_table_setup.png";
-import gallery2 from "@assets/generated_images/colorful_decorated_cupcakes.png";
-import gallery3 from "@assets/generated_images/happy_kids_playing_games.png";
-import gallery4 from "@assets/generated_images/pastel_balloon_arch.png";
-import gallery5 from "@assets/generated_images/party_favor_bags.png";
-import gallery6 from "@assets/generated_images/kids_party_entertainment_props.png";
+import gallery1 from "@assets/generated_images/diy_backyard_party_table.png";
+import gallery2 from "@assets/generated_images/homemade_cupcakes.png";
+import gallery3 from "@assets/generated_images/kids_playing_in_backyard.png";
+import gallery4 from "@assets/generated_images/simple_balloon_decoration.png";
+import gallery5 from "@assets/generated_images/handmade_party_favors.png";
+import gallery6 from "@assets/generated_images/simple_kids_craft_activity.png";
 
 const images = [
   { src: gallery1, caption: "Sparkly setups" },

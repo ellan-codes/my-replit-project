@@ -47,7 +47,7 @@ export const PACKAGES: Package[] = [
     priceRange: "$100–$200",
     minHourly: 100,
     maxHourly: 200,
-    includes: ["Catering", "Setup", "Serving", "Decorating", "Entertainment"],
+    includes: ["Setup", "Catering", "Serving", "Decorating", "Entertainment"],
     isPopular: true,
     hasEntertainmentIncluded: true,
   },
@@ -57,7 +57,7 @@ export const PACKAGES: Package[] = [
     priceRange: "$90–$150",
     minHourly: 90,
     maxHourly: 150,
-    includes: ["Catering", "Serving", "Setup"],
+    includes: ["Setup", "Catering", "Serving", "Decorating"],
     hasEntertainmentIncluded: false,
   },
   {
@@ -66,8 +66,8 @@ export const PACKAGES: Package[] = [
     priceRange: "$80–$100",
     minHourly: 80,
     maxHourly: 100,
-    includes: ["Serving", "Catering", "Entertainment"],
-    hasEntertainmentIncluded: true,
+    includes: ["Setup", "Catering", "Serving"],
+    hasEntertainmentIncluded: false,
   },
   {
     id: "package-d",
@@ -75,7 +75,7 @@ export const PACKAGES: Package[] = [
     priceRange: "$45–$90",
     minHourly: 45,
     maxHourly: 90,
-    includes: ["Setup", "Catering", "Serving"],
+    includes: ["Setup", "Catering"],
     hasEntertainmentIncluded: false,
   },
 ];
@@ -86,7 +86,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   // Load from local storage on mount
   useEffect(() => {
-    const saved = localStorage.getItem("prenndy-cart");
+    const saved = localStorage.getItem("prennedy-cart");
     if (saved) {
       try {
         setItems(JSON.parse(saved));
@@ -98,7 +98,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   // Save to local storage on change
   useEffect(() => {
-    localStorage.setItem("prenndy-cart", JSON.stringify(items));
+    localStorage.setItem("prennedy-cart", JSON.stringify(items));
   }, [items]);
 
   const addItem = (item: Omit<CartItem, "id">) => {

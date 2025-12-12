@@ -31,6 +31,7 @@ export function About() {
                   <li>✨ 8th Grade student</li>
                   <li>🎀 Loves tumbling & cheerleading</li>
                   <li>💖 Favorite color: Pink</li>
+                  <li>🎨 Creative & organized</li>
                 </ul>
               </div>
             </div>
@@ -82,7 +83,7 @@ export function Contact() {
               <Mail />
             </div>
             <h3 className="font-bold">Email Us</h3>
-            <p className="text-muted-foreground text-sm">hello@prenndystyle.com</p>
+            <p className="text-muted-foreground text-sm">ellap@villagegatestudents.com</p>
           </div>
           
           <div className="bg-white p-8 rounded-2xl shadow-sm flex flex-col items-center gap-4">
@@ -90,7 +91,7 @@ export function Contact() {
               <Phone />
             </div>
             <h3 className="font-bold">Call Us</h3>
-            <p className="text-muted-foreground text-sm">(555) 123-4567</p>
+            <p className="text-muted-foreground text-sm">442-369-0593</p>
           </div>
 
           <div className="bg-white p-8 rounded-2xl shadow-sm flex flex-col items-center gap-4">

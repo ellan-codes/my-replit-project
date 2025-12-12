@@ -16,7 +16,7 @@ export default function Home() {
       <About />
       <Contact />
       <footer className="bg-primary text-primary-foreground py-8 text-center">
-        <p className="font-display font-bold">Prenndy Style Party Planning © 2025</p>
+        <p className="font-display font-bold">Prennedy Style Party Planning © 2025</p>
         <p className="text-sm opacity-80 mt-2">Made with sparkle in Encinitas, CA</p>
       </footer>
     </div>

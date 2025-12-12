@@ -33,7 +33,7 @@ export function Hero() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-5xl md:text-7xl font-display font-bold text-primary drop-shadow-sm mb-4">
-            Prenndy Style
+            Prennedy Style
             <br />
             <span className="text-secondary">Party Planning</span>
           </h1>

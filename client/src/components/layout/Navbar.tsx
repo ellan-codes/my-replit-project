@@ -61,7 +61,7 @@ export function Navbar() {
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
           <Link href="/" className="text-2xl font-display font-bold text-primary">
-            Prenndy Style
+            Prennedy Style
           </Link>
 
           {/* Desktop Nav */}

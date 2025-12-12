@@ -186,15 +186,15 @@ function CustomizeModal({
             </div>
             <div className="space-y-2">
               <Label htmlFor="hours" className="font-bold">
-                Hours
+                Hours (Max 4)
               </Label>
               <Input
                 id="hours"
                 type="number"
                 min="1"
-                max="6"
+                max="4"
                 value={hours}
-                onChange={(e) => setHours(parseInt(e.target.value) || 1)}
+                onChange={(e) => setHours(Math.min(parseInt(e.target.value) || 1, 4))}
                 className="rounded-lg border-2 focus-visible:ring-primary"
               />
             </div>
