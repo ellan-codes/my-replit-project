@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import heroBg from "@assets/generated_images/festive_hero_background_with_balloons_and_sparkles.png";
+import heroBg from "@assets/generated_images/soft_pastel_party_background.png";
 
 export function Hero() {
   const scrollToPackages = () => {
@@ -22,7 +22,7 @@ export function Hero() {
           alt="Party Background"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-white/30 backdrop-blur-[2px]"></div>
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px]"></div>
       </div>
 
       {/* Content */}
@@ -32,12 +32,12 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-7xl font-display font-bold text-primary drop-shadow-sm mb-4">
+          <h1 className="text-5xl md:text-7xl font-display font-bold text-gray-800 drop-shadow-sm mb-4">
             Prennedy Style
             <br />
-            <span className="text-secondary">Party Planning</span>
+            <span className="text-primary/90">Party Planning</span>
           </h1>
-          <p className="text-xl md:text-2xl font-body text-gray-800 mb-8 max-w-2xl mx-auto font-medium">
+          <p className="text-xl md:text-2xl font-body text-gray-700 mb-8 max-w-2xl mx-auto font-medium">
             “Sparkly parties. Delicious food. Stress-free parents.”
           </p>
 
@@ -45,7 +45,7 @@ export function Hero() {
             <Button
               size="lg"
               onClick={scrollToPackages}
-              className="text-lg px-8 py-6 rounded-full bg-primary hover:bg-primary/90 text-white shadow-xl hover:scale-105 transition-transform"
+              className="text-lg px-8 py-6 rounded-full bg-primary hover:bg-primary/90 text-white shadow-lg hover:scale-105 transition-transform"
             >
               Shop Packages
             </Button>
@@ -53,7 +53,7 @@ export function Hero() {
               size="lg"
               variant="outline"
               onClick={scrollToContact}
-              className="text-lg px-8 py-6 rounded-full bg-white/80 hover:bg-white text-primary border-2 border-primary shadow-lg hover:scale-105 transition-transform"
+              className="text-lg px-8 py-6 rounded-full bg-white/90 hover:bg-white text-gray-800 border-2 border-gray-200 shadow-md hover:scale-105 transition-transform"
             >
               Request a Quote
             </Button>
@@ -68,7 +68,7 @@ export function Hero() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5 + i * 0.1 }}
-                  className="bg-white/80 backdrop-blur px-6 py-2 rounded-full shadow-sm text-sm md:text-base font-bold text-foreground border border-white/50"
+                  className="bg-white/70 backdrop-blur px-6 py-2 rounded-full shadow-sm text-sm md:text-base font-bold text-gray-600 border border-white/60"
                 >
                   ✨ {badge}
                 </motion.div>
@@ -77,11 +77,6 @@ export function Hero() {
           </div>
         </motion.div>
       </div>
-
-      {/* Floating Elements (Sparkles) */}
-      <div className="absolute top-1/4 left-10 animate-pulse text-yellow-400 text-4xl">✨</div>
-      <div className="absolute bottom-1/3 right-10 animate-pulse delay-700 text-pink-400 text-5xl">🎈</div>
-      <div className="absolute top-20 right-1/4 animate-sparkle text-blue-400 text-3xl">✨</div>
     </section>
   );
 }

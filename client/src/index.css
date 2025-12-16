@@ -7,26 +7,27 @@
   --font-display: "Fredoka", sans-serif;
   --font-body: "Nunito", sans-serif;
 
-  --color-background: hsl(330 100% 98%);
+  --color-background: hsl(330 50% 99%);
   --color-foreground: hsl(330 20% 20%);
 
-  --color-primary: hsl(330 85% 60%);
+  /* Softer, pastel palette */
+  --color-primary: hsl(330 70% 70%); 
   --color-primary-foreground: hsl(0 0% 100%);
 
-  --color-secondary: hsl(180 70% 45%);
+  --color-secondary: hsl(175 50% 60%);
   --color-secondary-foreground: hsl(0 0% 100%);
 
-  --color-accent: hsl(45 95% 60%);
-  --color-accent-foreground: hsl(30 80% 20%);
+  --color-accent: hsl(45 90% 75%);
+  --color-accent-foreground: hsl(30 60% 30%);
 
-  --color-muted: hsl(330 20% 94%);
-  --color-muted-foreground: hsl(330 10% 40%);
+  --color-muted: hsl(330 20% 96%);
+  --color-muted-foreground: hsl(330 10% 50%);
 
   --color-card: hsl(0 0% 100%);
   --color-card-foreground: hsl(330 20% 20%);
 
-  --color-border: hsl(330 30% 90%);
-  --color-input: hsl(330 30% 90%);
+  --color-border: hsl(330 20% 90%);
+  --color-input: hsl(330 20% 90%);
   
   --radius-lg: 1.5rem;
   --radius-md: 1rem;
@@ -40,8 +41,8 @@
   body {
     @apply font-body antialiased bg-background text-foreground selection:bg-primary/20;
     background-image: 
-      radial-gradient(circle at 10% 20%, hsla(330, 80%, 90%, 0.5) 0%, transparent 20%),
-      radial-gradient(circle at 90% 80%, hsla(180, 70%, 90%, 0.5) 0%, transparent 20%);
+      radial-gradient(circle at 10% 20%, hsla(330, 40%, 90%, 0.3) 0%, transparent 20%),
+      radial-gradient(circle at 90% 80%, hsla(175, 40%, 90%, 0.3) 0%, transparent 20%);
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-semibold tracking-wide;
