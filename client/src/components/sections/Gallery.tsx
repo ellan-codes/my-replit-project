@@ -10,6 +10,8 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import gallery1 from "@assets/generated_images/real_backyard_party_table_iphone_photo.png";
 import gallery2 from "@assets/generated_images/homemade_cupcakes_on_counter.png";
 import gallery3 from "@assets/generated_images/kids_playing_tag_backyard.png";
+import gallery5 from "@assets/generated_images/handmade_paper_goodie_bags.png";
+import gallery6 from "@assets/generated_images/kids_messy_craft_table.png";
 import gallery7 from "@assets/generated_images/kids_dress_up_trunk.png";
 import gallery8 from "@assets/generated_images/cute_party_invitations.png";
 import gallery9 from "@assets/generated_images/party_music_setup.png";
