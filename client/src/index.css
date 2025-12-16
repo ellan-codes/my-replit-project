@@ -14,7 +14,7 @@
   --color-primary: hsl(330 70% 70%); 
   --color-primary-foreground: hsl(0 0% 100%);
 
-  --color-secondary: hsl(175 50% 60%);
+  --color-secondary: hsl(210 60% 70%); /* Soft Pastel Blue */
   --color-secondary-foreground: hsl(0 0% 100%);
 
   --color-accent: hsl(45 90% 75%);
@@ -42,7 +42,7 @@
     @apply font-body antialiased bg-background text-foreground selection:bg-primary/20;
     background-image: 
       radial-gradient(circle at 10% 20%, hsla(330, 40%, 90%, 0.3) 0%, transparent 20%),
-      radial-gradient(circle at 90% 80%, hsla(175, 40%, 90%, 0.3) 0%, transparent 20%);
+      radial-gradient(circle at 90% 80%, hsla(210, 40%, 90%, 0.3) 0%, transparent 20%);
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-semibold tracking-wide;

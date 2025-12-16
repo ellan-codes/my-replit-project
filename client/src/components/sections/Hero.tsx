@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import heroBg from "@assets/generated_images/soft_pastel_party_background.png";
+import heroBg from "@assets/generated_images/soft_pastel_pink_and_blue_party_background.png";
 
 export function Hero() {
   const scrollToPackages = () => {
