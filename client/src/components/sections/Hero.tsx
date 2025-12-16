@@ -61,7 +61,7 @@ export function Hero() {
 
           {/* Trust Badges */}
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-            {["Catering + Setup", "Kid-friendly entertainment", "Made for busy parents"].map(
+            {["Catering + Setup", "Kid-friendly entertainment", "Made for busy parents", "Adult Parties"].map(
               (badge, i) => (
                 <motion.div
                   key={badge}
