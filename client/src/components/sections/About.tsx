@@ -83,7 +83,7 @@ export function Contact() {
               <Mail />
             </div>
             <h3 className="font-bold">Email Us</h3>
-            <p className="text-muted-foreground text-sm">ellap@villagegatestudents.com</p>
+            <p className="text-muted-foreground text-sm">ellangellpo@gmail.com</p>
           </div>
           
           <div className="bg-white p-8 rounded-2xl shadow-sm flex flex-col items-center gap-4">

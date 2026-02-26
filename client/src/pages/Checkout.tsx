@@ -40,7 +40,7 @@ export default function Checkout() {
   const [isSuccess, setIsSuccess] = useState(false);
   
   // The email where booking requests will be sent
-  const DESTINATION_EMAIL = "ellap@villagegatestudents.com";
+  const DESTINATION_EMAIL = "ellangellpo@gmail.com";
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
