@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useCart, PACKAGES, CateringSize } from "@/lib/cart";
-import { Trash2, ArrowRight, Pencil, Check, X } from "lucide-react";
+import { Trash2, ArrowRight, Pencil } from "lucide-react";
 import { Link } from "wouter";
 
 function EditableCartItem({
@@ -58,34 +58,19 @@ function EditableCartItem({
   };
 
   return (
-    <div className="rounded-xl p-4 border-2 border-primary/30 space-y-3 relative z-10 shadow-md" style={{ backgroundColor: '#ffffff' }}>
-      <div className="flex items-center justify-between">
-        <span className="font-bold text-sm text-primary">Editing</span>
-        <div className="flex gap-1">
-          <button
-            onClick={handleSave}
-            className="p-1.5 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors"
-            data-testid="button-save-edit"
-          >
-            <Check className="w-4 h-4" />
-          </button>
-          <button
-            onClick={onCancel}
-            className="p-1.5 rounded-lg bg-muted text-muted-foreground hover:bg-muted/80 transition-colors"
-            data-testid="button-cancel-edit"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
+    <div
+      className="rounded-xl p-4 border-2 border-primary/30 space-y-3 shadow-md"
+      style={{ background: '#ffffff', isolation: 'isolate' }}
+    >
+      <div className="font-bold text-sm text-primary">Editing</div>
 
       <div>
-        <label className="text-xs font-medium text-muted-foreground mb-1 block">Package</label>
+        <label className="text-xs font-medium text-gray-500 mb-1 block">Package</label>
         <Select value={packageId} onValueChange={setPackageId}>
-          <SelectTrigger className="bg-white border-gray-200" data-testid="select-package" style={{ backgroundColor: '#ffffff' }}>
+          <SelectTrigger data-testid="select-package" style={{ background: '#ffffff' }}>
             <SelectValue />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent style={{ background: '#ffffff' }}>
             {PACKAGES.map((pkg) => (
               <SelectItem key={pkg.id} value={pkg.id}>
                 {pkg.name} ({pkg.priceRange}/hr)
@@ -96,12 +81,12 @@ function EditableCartItem({
       </div>
 
       <div>
-        <label className="text-xs font-medium text-muted-foreground mb-1 block">Catering Size</label>
+        <label className="text-xs font-medium text-gray-500 mb-1 block">Catering Size</label>
         <Select value={cateringSize} onValueChange={(v) => setCateringSize(v as CateringSize)}>
-          <SelectTrigger className="bg-white border-gray-200" data-testid="select-catering-size" style={{ backgroundColor: '#ffffff' }}>
+          <SelectTrigger data-testid="select-catering-size" style={{ background: '#ffffff' }}>
             <SelectValue />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent style={{ background: '#ffffff' }}>
             <SelectItem value="Small">Small (~10 guests) — ${selectedPkg.prices.Small}/hr</SelectItem>
             <SelectItem value="Medium">Medium (~20 guests) — ${selectedPkg.prices.Medium}/hr</SelectItem>
             <SelectItem value="Large">Large (~30 guests) — ${selectedPkg.prices.Large}/hr</SelectItem>
@@ -110,12 +95,12 @@ function EditableCartItem({
       </div>
 
       <div>
-        <label className="text-xs font-medium text-muted-foreground mb-1 block">Hours</label>
+        <label className="text-xs font-medium text-gray-500 mb-1 block">Hours</label>
         <Select value={String(hours)} onValueChange={(v) => setHours(Number(v))}>
-          <SelectTrigger className="bg-white border-gray-200" data-testid="select-hours" style={{ backgroundColor: '#ffffff' }}>
+          <SelectTrigger data-testid="select-hours" style={{ background: '#ffffff' }}>
             <SelectValue />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent style={{ background: '#ffffff' }}>
             {[1, 2, 3, 4].map((h) => (
               <SelectItem key={h} value={String(h)}>
                 {h} hour{h > 1 ? "s" : ""}
@@ -127,6 +112,24 @@ function EditableCartItem({
 
       <div className="pt-2 border-t border-primary/20 font-bold text-primary text-sm">
         New Est: ${estimatedCost}
+      </div>
+
+      <div className="flex gap-2 pt-1">
+        <Button
+          onClick={handleSave}
+          className="flex-1 rounded-lg"
+          data-testid="button-save-edit"
+        >
+          Save
+        </Button>
+        <Button
+          onClick={onCancel}
+          variant="outline"
+          className="flex-1 rounded-lg"
+          data-testid="button-cancel-edit"
+        >
+          Cancel
+        </Button>
       </div>
     </div>
   );
@@ -144,7 +147,10 @@ export function CartDrawer({
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="w-full sm:max-w-md flex flex-col bg-white">
+      <SheetContent
+        className="w-full sm:max-w-md flex flex-col"
+        style={{ background: '#ffffff' }}
+      >
         <SheetHeader>
           <SheetTitle className="font-display text-2xl text-primary">
             Your Party Cart
@@ -182,7 +188,8 @@ export function CartDrawer({
                 ) : (
                   <div
                     key={item.id}
-                    className="bg-secondary/5 rounded-xl p-4 border border-secondary/20 relative"
+                    className="rounded-xl p-4 border border-gray-200 relative"
+                    style={{ background: '#fafafa' }}
                   >
                     <div className="absolute top-3 right-3 flex gap-2">
                       <button
@@ -220,7 +227,7 @@ export function CartDrawer({
                         {item.isEntertainmentAddOn && " (+$25)"}
                       </p>
                     </div>
-                    <div className="mt-3 pt-3 border-t border-secondary/20 font-bold text-primary">
+                    <div className="mt-3 pt-3 border-t border-gray-200 font-bold text-primary">
                       Est: ${
                         item.hourlyRate * item.hours + (item.isEntertainmentAddOn ? 25 : 0)
                       }
@@ -233,7 +240,7 @@ export function CartDrawer({
         </ScrollArea>
 
         <SheetFooter className="sm:flex-col gap-4">
-          <div className="w-full space-y-2 bg-muted/30 p-4 rounded-lg">
+          <div className="w-full space-y-2 p-4 rounded-lg" style={{ background: '#f5f5f5' }}>
             <div className="flex justify-between font-bold text-lg">
               <span>Total Estimate:</span>
               <span className="text-primary">
