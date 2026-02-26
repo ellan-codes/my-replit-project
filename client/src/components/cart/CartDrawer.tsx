@@ -58,7 +58,7 @@ function EditableCartItem({
   };
 
   return (
-    <div className="bg-white rounded-xl p-4 border-2 border-primary/30 space-y-3">
+    <div className="rounded-xl p-4 border-2 border-primary/30 space-y-3 relative z-10 shadow-md" style={{ backgroundColor: '#ffffff' }}>
       <div className="flex items-center justify-between">
         <span className="font-bold text-sm text-primary">Editing</span>
         <div className="flex gap-1">
@@ -82,7 +82,7 @@ function EditableCartItem({
       <div>
         <label className="text-xs font-medium text-muted-foreground mb-1 block">Package</label>
         <Select value={packageId} onValueChange={setPackageId}>
-          <SelectTrigger className="bg-white" data-testid="select-package">
+          <SelectTrigger className="bg-white border-gray-200" data-testid="select-package" style={{ backgroundColor: '#ffffff' }}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -98,7 +98,7 @@ function EditableCartItem({
       <div>
         <label className="text-xs font-medium text-muted-foreground mb-1 block">Catering Size</label>
         <Select value={cateringSize} onValueChange={(v) => setCateringSize(v as CateringSize)}>
-          <SelectTrigger className="bg-white" data-testid="select-catering-size">
+          <SelectTrigger className="bg-white border-gray-200" data-testid="select-catering-size" style={{ backgroundColor: '#ffffff' }}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -112,7 +112,7 @@ function EditableCartItem({
       <div>
         <label className="text-xs font-medium text-muted-foreground mb-1 block">Hours</label>
         <Select value={String(hours)} onValueChange={(v) => setHours(Number(v))}>
-          <SelectTrigger className="bg-white" data-testid="select-hours">
+          <SelectTrigger className="bg-white border-gray-200" data-testid="select-hours" style={{ backgroundColor: '#ffffff' }}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
