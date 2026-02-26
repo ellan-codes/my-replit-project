@@ -7,15 +7,15 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import gallery1 from "@assets/generated_images/sparkly_setups_festive.png";
-import gallery2 from "@assets/generated_images/yummy_kid_treats.png";
-import gallery3 from "@assets/generated_images/kids_playing_tag_backyard.png";
-import gallery5 from "@assets/generated_images/handmade_paper_goodie_bags.png";
-import gallery6 from "@assets/generated_images/fun_entertainment_props.png";
-import gallery7 from "@assets/generated_images/kids_dress_up_trunk.png";
-import gallery8 from "@assets/generated_images/cute_party_invitations.png";
-import gallery9 from "@assets/generated_images/party_music_setup.png";
-import gallery4_new from "@assets/generated_images/colorful_balloon_garland.png";
+import gallery1 from "@assets/optimized/sparkly_setups_festive.jpg";
+import gallery2 from "@assets/optimized/yummy_kid_treats.jpg";
+import gallery3 from "@assets/optimized/kids_playing_tag_backyard.jpg";
+import gallery5 from "@assets/optimized/handmade_paper_goodie_bags.jpg";
+import gallery6 from "@assets/optimized/fun_entertainment_props.jpg";
+import gallery7 from "@assets/optimized/kids_dress_up_trunk.jpg";
+import gallery8 from "@assets/optimized/cute_party_invitations.jpg";
+import gallery9 from "@assets/optimized/party_music_setup.jpg";
+import gallery4_new from "@assets/optimized/colorful_balloon_garland.jpg";
 
 const images = [
   { 
@@ -155,6 +155,7 @@ export function Gallery() {
               <img
                 src={img.src}
                 alt={img.caption}
+                loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
