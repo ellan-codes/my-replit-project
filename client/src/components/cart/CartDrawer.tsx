@@ -58,7 +58,7 @@ function EditableCartItem({
   };
 
   return (
-    <div className="bg-primary/5 rounded-xl p-4 border-2 border-primary/30 space-y-3">
+    <div className="bg-white rounded-xl p-4 border-2 border-primary/30 space-y-3">
       <div className="flex items-center justify-between">
         <span className="font-bold text-sm text-primary">Editing</span>
         <div className="flex gap-1">
