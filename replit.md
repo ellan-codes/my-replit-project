@@ -20,16 +20,23 @@ A fun, colorful website for "Prennedy Style Party Planning," a teen-run party pl
 ## Email Setup (Nodemailer + Gmail SMTP)
 - **Does NOT use Replit integrations** (Resend/SendGrid dismissed by user)
 - Sends from: `hi.logichm@gmail.com` via Gmail SMTP
-- Delivers to: `ellangellpo@gmail.com`
+- Delivers to: `vgaparty@gmail.com`
 - Environment variables:
   - `SMTP_HOST` = smtp.gmail.com
   - `SMTP_PORT` = 587
   - `SMTP_USER` = hi.logichm@gmail.com
   - `SMTP_PASS` = (secret - Gmail App Password)
-  - `MAIL_TO` = ellangellpo@gmail.com
+  - `MAIL_TO` = vgaparty@gmail.com
   - `MAIL_FROM` = Prennedy Style Party Planning <hi.logichm@gmail.com>
 - API endpoint: `POST /api/booking`
 - Includes honeypot spam protection + IP rate limiting (3 req/min)
+
+## Vercel Deployment
+- Vercel serverless function at `api/booking.js` handles email sending
+- `vercel.json` configures the build output and API rewrites
+- Build command: `cd client && npx vite build --outDir ../dist`
+- Output directory: `dist`
+- All env vars listed above must be set in Vercel project settings
 
 ## Contact Info
 - Email: vgaparty@gmail.com
