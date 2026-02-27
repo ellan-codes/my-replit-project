@@ -45,8 +45,8 @@ export async function registerRoutes(
         return res.status(200).json({ success: true });
       }
 
-      if (!customer?.parentName || !customer?.email || !customer?.phone || !customer?.date || !customer?.address) {
-        return res.status(400).json({ error: "Missing required fields." });
+      if (!customer?.email) {
+        return res.status(400).json({ error: "Email address is required." });
       }
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

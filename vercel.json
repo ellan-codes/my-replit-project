@@ -1,8 +1,10 @@
 {
-  "buildCommand": "cd client && npx vite build --outDir ../dist",
-  "outputDirectory": "dist",
+  "framework": null,
+  "installCommand": "npm install",
+  "buildCommand": "npx vite build --config vite.config.ts",
+  "outputDirectory": "dist/public",
   "rewrites": [
-    { "source": "/api/booking", "destination": "/api/booking" },
+    { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

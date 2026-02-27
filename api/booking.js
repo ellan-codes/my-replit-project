@@ -16,6 +16,14 @@ function isRateLimited(ip) {
 }
 
 export default async function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -38,14 +46,8 @@ export default async function handler(req, res) {
       return res.status(200).json({ success: true });
     }
 
-    if (
-      !customer?.parentName ||
-      !customer?.email ||
-      !customer?.phone ||
-      !customer?.date ||
-      !customer?.address
-    ) {
-      return res.status(400).json({ error: "Missing required fields." });
+    if (!customer?.email) {
+      return res.status(400).json({ error: "Email address is required." });
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -75,17 +77,17 @@ export default async function handler(req, res) {
       .join("\n");
 
     const textBody = [
-      `New Booking Request from ${customer.parentName}`,
+      `New Booking Request from ${customer.parentName || "Not provided"}`,
       ``,
       `--- Contact Info ---`,
-      `Name: ${customer.parentName}`,
+      `Name: ${customer.parentName || "Not provided"}`,
       `Email: ${customer.email}`,
-      `Phone: ${customer.phone}`,
+      `Phone: ${customer.phone || "Not provided"}`,
       ``,
       `--- Party Details ---`,
-      `Date: ${customer.date}`,
+      `Date: ${customer.date || "Not specified"}`,
       `Start Time: ${customer.startTime || "Not specified"}`,
-      `Location: ${customer.address}`,
+      `Location: ${customer.address || "Not specified"}`,
       `Theme: ${customer.theme || "Not specified"}`,
       `Dietary Notes: ${customer.dietaryNotes || "None"}`,
       `Special Requests: ${customer.notes || "None"}`,
@@ -101,15 +103,15 @@ export default async function handler(req, res) {
         <h2 style="color: #d4679a;">New Booking Request</h2>
         <h3>Contact Info</h3>
         <table style="border-collapse: collapse; width: 100%;">
-          <tr><td style="padding: 4px 8px; font-weight: bold;">Name:</td><td style="padding: 4px 8px;">${customer.parentName}</td></tr>
+          <tr><td style="padding: 4px 8px; font-weight: bold;">Name:</td><td style="padding: 4px 8px;">${customer.parentName || "Not provided"}</td></tr>
           <tr><td style="padding: 4px 8px; font-weight: bold;">Email:</td><td style="padding: 4px 8px;"><a href="mailto:${customer.email}">${customer.email}</a></td></tr>
-          <tr><td style="padding: 4px 8px; font-weight: bold;">Phone:</td><td style="padding: 4px 8px;">${customer.phone}</td></tr>
+          <tr><td style="padding: 4px 8px; font-weight: bold;">Phone:</td><td style="padding: 4px 8px;">${customer.phone || "Not provided"}</td></tr>
         </table>
         <h3>Party Details</h3>
         <table style="border-collapse: collapse; width: 100%;">
-          <tr><td style="padding: 4px 8px; font-weight: bold;">Date:</td><td style="padding: 4px 8px;">${customer.date}</td></tr>
+          <tr><td style="padding: 4px 8px; font-weight: bold;">Date:</td><td style="padding: 4px 8px;">${customer.date || "Not specified"}</td></tr>
           <tr><td style="padding: 4px 8px; font-weight: bold;">Start Time:</td><td style="padding: 4px 8px;">${customer.startTime || "Not specified"}</td></tr>
-          <tr><td style="padding: 4px 8px; font-weight: bold;">Location:</td><td style="padding: 4px 8px;">${customer.address}</td></tr>
+          <tr><td style="padding: 4px 8px; font-weight: bold;">Location:</td><td style="padding: 4px 8px;">${customer.address || "Not specified"}</td></tr>
           <tr><td style="padding: 4px 8px; font-weight: bold;">Theme:</td><td style="padding: 4px 8px;">${customer.theme || "Not specified"}</td></tr>
           <tr><td style="padding: 4px 8px; font-weight: bold;">Dietary Notes:</td><td style="padding: 4px 8px;">${customer.dietaryNotes || "None"}</td></tr>
           <tr><td style="padding: 4px 8px; font-weight: bold;">Special Requests:</td><td style="padding: 4px 8px;">${customer.notes || "None"}</td></tr>
@@ -133,14 +135,11 @@ export default async function handler(req, res) {
         "Prennedy Style Party Planning <hi.logichm@gmail.com>",
       to: process.env.MAIL_TO || "vgaparty@gmail.com",
       replyTo: customer.email,
-      subject: `New Booking Request from ${customer.parentName}`,
+      subject: `New Booking Request from ${customer.parentName || customer.email}`,
       text: textBody,
       html: htmlBody,
     });
 
-    console.log(
-      `Booking email sent for ${customer.parentName} (${customer.email})`
-    );
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error("Failed to send booking email:", err.message);

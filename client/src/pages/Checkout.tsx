@@ -21,12 +21,12 @@ import { Loader2, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const formSchema = z.object({
-  parentName: z.string().min(2, "Name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().min(10, "Valid phone number required"),
-  date: z.string().min(1, "Date is required"),
+  parentName: z.string().optional(),
+  email: z.string().email("Valid email address is required"),
+  phone: z.string().optional(),
+  date: z.string().optional(),
   startTime: z.string().optional(),
-  address: z.string().min(5, "Address is required"),
+  address: z.string().optional(),
   theme: z.string().optional(),
   dietaryNotes: z.string().optional(),
   notes: z.string().optional(),
@@ -211,7 +211,7 @@ export default function Checkout() {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email Address</FormLabel>
+                        <FormLabel>Email Address <span className="text-red-500">*</span></FormLabel>
                         <FormControl>
                           <Input placeholder="jane@example.com" {...field} />
                         </FormControl>
