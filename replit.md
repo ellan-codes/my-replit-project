@@ -32,7 +32,7 @@ A fun, colorful website for "Prennedy Style Party Planning," a teen-run party pl
 - Includes honeypot spam protection + IP rate limiting (3 req/min)
 
 ## Contact Info
-- Email: ellangellpo@gmail.com
+- Email: vgaparty@gmail.com
 - Phone: 442-369-0593
 
 ## Pricing (per hour)
