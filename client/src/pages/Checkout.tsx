@@ -70,6 +70,11 @@ export default function Checkout() {
         }),
       });
 
+      const contentType = res.headers.get("content-type") || "";
+      if (!contentType.includes("application/json")) {
+        throw new Error("Server error — please try again or contact us directly at vgaparty@gmail.com");
+      }
+
       const data = await res.json();
 
       if (!res.ok) {
