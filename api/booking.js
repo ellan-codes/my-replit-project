@@ -142,10 +142,11 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ success: true });
   } catch (err) {
-    console.error("Failed to send booking email:", err.message);
+    console.error("Failed to send booking email:", err.message, err.stack);
+    const debugInfo = process.env.SMTP_USER ? "SMTP credentials found" : "SMTP credentials MISSING";
     return res.status(500).json({
-      error:
-        "Failed to send your request. Please try again or contact us directly.",
+      error: "Failed to send your request. Please try again or contact us directly.",
+      debug: `${debugInfo}. Error: ${err.message}`,
     });
   }
 }
