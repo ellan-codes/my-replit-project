@@ -38,9 +38,6 @@ export default function Checkout() {
   const [_, setLocation] = useLocation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  
-  // The email where booking requests will be sent
-  const DESTINATION_EMAIL = "ellangellpo@gmail.com";
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -60,26 +57,37 @@ export default function Checkout() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     
-    // Construct the email body/data
-    const bookingData = {
-      to: DESTINATION_EMAIL,
-      customer: values,
-      cart: items,
-      totalEstimate: totalEstimatedMin === totalEstimatedMax 
-        ? `$${totalEstimatedMin}` 
-        : `$${totalEstimatedMin} - $${totalEstimatedMax}`,
-    };
+    try {
+      const res = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customer: values,
+          cart: items,
+          totalEstimate: totalEstimatedMin === totalEstimatedMax 
+            ? `$${totalEstimatedMin}` 
+            : `$${totalEstimatedMin} - $${totalEstimatedMax}`,
+        }),
+      });
 
-    console.log(`Sending booking request to ${DESTINATION_EMAIL}:`, bookingData);
+      const data = await res.json();
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
 
-    // Success
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    clearCart();
-    window.scrollTo(0, 0);
+      setIsSuccess(true);
+      clearCart();
+      window.scrollTo(0, 0);
+    } catch (err: any) {
+      toast({
+        title: "Oops!",
+        description: err.message || "Failed to send your booking request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   if (isSuccess) {
