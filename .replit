@@ -45,3 +45,12 @@ waitForPort = 5000
 
 [agent]
 mockupState = "FULLSTACK"
+
+[userenv]
+
+[userenv.shared]
+SMTP_HOST = "smtp.gmail.com"
+SMTP_PORT = "587"
+SMTP_USER = "hi.logichm@gmail.com"
+MAIL_TO = "ellangellpo@gmail.com"
+MAIL_FROM = "Prennedy Style Party Planning <hi.logichm@gmail.com>"

@@ -1,0 +1,47 @@
+Role: Senior full-stack engineer. Goal: Fix our website’s contact form so submissions are emailed via SMTP using the custom domain hi.logichm.com, and delivered to ellangellpo@gmail.com. The site is hosted on Vercel.
+
+Constraints / requirements:
+- Do NOT hardcode secrets in code or commit them.
+- Use environment variables (Vercel env vars) for SMTP credentials and destination email.
+- Add server-side validation + basic spam protection (honeypot + rate limiting).
+- Return a clear success/failure response to the frontend; show a friendly message to user.
+
+Step 1 — Identify current form wiring
+- Find the contact form component and how it currently submits (fetch to an API route? third-party?).
+- If there is no backend handler, create one as a Vercel-friendly API endpoint (Next.js route handler /pages/api or /app/api depending on structure).
+
+Step 2 — Implement email sending through hi.logichm.com
+- Use Nodemailer (preferred) or another minimal SMTP library compatible with Vercel serverless.
+- Configure SMTP using these env vars:
+  - SMTP_HOST=hi.logichm.com
+  - SMTP_PORT=587
+  - SMTP_SECURE=false (STARTTLS)
+  - SMTP_USER=<full email address used to authenticate, e.g. contact@hi.logichm.com or whatever mailbox exists>
+  - SMTP_PASS=<APP_PASSWORD>
+  - MAIL_TO=ellangellpo@gmail.com
+  - MAIL_FROM="LOGIC HM Website <no-reply@hi.logichm.com>" (or use a real mailbox if needed)
+- IMPORTANT: Set the message “from” so deliverability is reasonable:
+  - Use `from: process.env.MAIL_FROM`
+  - Use `replyTo: userProvidedEmail` so replies go to the submitter
+  - Put user name/email/message in the body.
+
+Step 3 — Frontend integration
+- Ensure the form posts JSON to the API endpoint.
+- Disable the submit button while sending; show success/error states.
+- Clear the form on success.
+
+Step 4 — Security + DX
+- Validate required fields server-side (name/email/message).
+- Add a honeypot input (e.g. `company` hidden field); reject if filled.
+- Add lightweight rate limiting by IP (in-memory best-effort is fine for Vercel; if project already uses Upstash/Redis, use that).
+- Log only non-sensitive info; never log SMTP_PASS.
+
+Step 5 — Local + Vercel env var instructions
+- Add a .env.example with the required variables (no secrets).
+- Ensure the handler reads process.env.* and works in Vercel.
+- Provide the exact file paths you changed and a short checklist to deploy.
+
+Deliverables:
+- The exact code changes (files + diffs or full updated files).
+- The API endpoint URL path the form will call.
+- A checklist for setting Vercel env vars + redeploying.
